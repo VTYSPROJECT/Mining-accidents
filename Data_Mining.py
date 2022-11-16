@@ -1,6 +1,7 @@
 import re
 from bs4 import BeautifulSoup
 import requests
+
 UrlLink = input("Site linki girin: ")
 Web = requests.Session()
 
