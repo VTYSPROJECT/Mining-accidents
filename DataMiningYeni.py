@@ -17,7 +17,7 @@ aylar="(January | February | March |April | May | June | July | August | Septemb
 #kisi="(işçi|işçiler|madenciler|kişiler|kişi|madenci|insan)"
 kisi="( worker | workers | miners | people | person | miner | human )"
 #vefat="(hayatını\skaybetti|öldü|ölmüş|ölürken|ölmesi|yaşamını\syitirmiş|yaşamını\syitirdi|can\sverdi|vefat\setti|hayatlarını\kaybetti|öldürdü|ölüm)"
-vefat ="(passed\saway | died | dead | dying | to\sdie | deceased | passed\saway | died | passed\saway | lost\stheir\slives | killed | death | were\skilled)"
+vefat =".*(passed\saway|died|dead|dying|to\sdie|deceased|passed\saway|died|passed\saway|lost\stheir\slives|killed|death|were\skilled)"
 result=[]
 
 def cevir():
@@ -33,9 +33,9 @@ for line in content.splitlines():
         sayi = "([0-9] | [1-9][0-9] | [1-9][0-9][0-9] | [1-9][0-9][0-9][0-9])"
 
         try:
-            v_eden=re.findall(sayi + kisi, line)[0][0]
+            v_eden=re.findall("\s"+sayi +"\s"+ kisi +"\s"+vefat, line)[0][0]
             if(v_eden=="Null"):
-                re.findall(kisi + sayi, line)[0][0]
+                re.findall("\s"+kisi +"\s"+ sayi, line)[0][0]
             #v_eden=re.findall("[0-9].*"+kisi+".*"+vefat, line)[0][0]
         except:
             pass
